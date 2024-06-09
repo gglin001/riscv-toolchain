@@ -18,3 +18,7 @@ meson compile -C build
 meson install -C build
 
 popd
+
+# TODO: set `--prefix` to llvm toolchain dir
+cp -r $PWD/picolibc/build/install/* \
+  llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/
