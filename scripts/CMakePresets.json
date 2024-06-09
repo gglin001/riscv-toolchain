@@ -26,10 +26,10 @@
         "LLVM_INCLUDE_RUNTIMES": false,
         "LLVM_INCLUDE_BENCHMARKS": false,
         "LLVM_APPEND_VC_REV": false,
-        // TODO: disable it, enable `LLVM_DISTRIBUTION_COMPONENTS`
         "LLVM_ENABLE_IDE": false,
         // "LLVM_DISTRIBUTION_COMPONENTS": "clang;clang-resource-headers;lld;",
         "LLVM_TARGETS_TO_BUILD": "RISCV",
+        "LLVM_DEFAULT_TARGET_TRIPLE": "riscv64-unknown-elf",
         "LLVM_ENABLE_PROJECTS": "clang;lld"
       }
     },
@@ -37,10 +37,10 @@
       "name": "compiler-rt",
       "description": "build compiler-rt",
       "generator": "Ninja",
-      "binaryDir": "${sourceDir}/../build_compiler-rt",
+      "binaryDir": "${sourceDir}/../build_crt",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release",
-        "CMAKE_INSTALL_PREFIX": "${sourceDir}/../build_compiler-rt/install",
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/../build_crt/install",
         "CMAKE_EXPORT_COMPILE_COMMANDS": true,
         "CMAKE_SYSTEM_NAME": "Generic",
         // TODO: mv to `LLVM_CMAKE_DIR`
