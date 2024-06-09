@@ -1,0 +1,73 @@
+{
+  "version": 2,
+  "configurePresets": [
+    {
+      "name": "clang",
+      "description": "build clang",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/../build",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/../build/install",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": true,
+        "CMAKE_C_COMPILER": "/usr/bin/clang",
+        "CMAKE_CXX_COMPILER": "/usr/bin/clang++",
+        "CMAKE_INSTALL_RPATH_USE_LINK_PATH": true,
+        "LLVM_ENABLE_LLD": false,
+        "LLVM_ENABLE_ASSERTIONS": true,
+        "LLVM_ENABLE_WARNINGS": true,
+        "LLVM_ENABLE_BINDINGS": false,
+        "LLVM_INCLUDE_DOCS": false,
+        "LLVM_INCLUDE_EXAMPLES": false,
+        "LLVM_INCLUDE_TESTS": false,
+        "LLVM_INCLUDE_TOOLS": true,
+        "LLVM_INCLUDE_UTILS": false,
+        "LLVM_INSTALL_UTILS": false,
+        "LLVM_INCLUDE_RUNTIMES": false,
+        "LLVM_INCLUDE_BENCHMARKS": false,
+        "LLVM_APPEND_VC_REV": false,
+        // TODO: disable it, enable `LLVM_DISTRIBUTION_COMPONENTS`
+        "LLVM_ENABLE_IDE": false,
+        // "LLVM_DISTRIBUTION_COMPONENTS": "clang;clang-resource-headers;lld;",
+        "LLVM_TARGETS_TO_BUILD": "RISCV",
+        "LLVM_ENABLE_PROJECTS": "clang;lld"
+      }
+    },
+    {
+      "name": "compiler-rt",
+      "description": "build compiler-rt",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/../build_compiler-rt",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/../build_compiler-rt/install",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": true,
+        "CMAKE_SYSTEM_NAME": "Generic",
+        // TODO: mv to `LLVM_CMAKE_DIR`
+        "LLVM_CONFIG_PATH": "${sourceDir}/../build/install/bin/llvm-config",
+        "CMAKE_C_COMPILER": "${sourceDir}/../build/install/bin/clang",
+        "CMAKE_CXX_COMPILER": "${sourceDir}/../build/install/bin/clang++",
+        "CMAKE_AR": "${sourceDir}/../build/install/bin/llvm-ar",
+        "CMAKE_NM": "${sourceDir}/../build/install/bin/llvm-nm",
+        "CMAKE_RANLIB": "${sourceDir}/../build/install/bin/llvm-ranlib",
+        "CMAKE_C_COMPILER_TARGET": "riscv64-unknown-elf",
+        "CMAKE_CXX_COMPILER_TARGET": "riscv64-unknown-elf",
+        "CMAKE_ASM_COMPILER_TARGET": "riscv64-unknown-elf",
+        "CMAKE_C_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 ",
+        "CMAKE_CXX_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 ",
+        "CMAKE_ASM_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2",
+        "CMAKE_EXE_LINKER_FLAGS": "-nostartfiles -nostdlib",
+        "COMPILER_RT_BAREMETAL_BUILD": true,
+        "COMPILER_RT_BUILD_BUILTINS": true,
+        "COMPILER_RT_BUILD_MEMPROF": false,
+        "COMPILER_RT_BUILD_LIBFUZZER": false,
+        "COMPILER_RT_BUILD_PROFILE": false,
+        "COMPILER_RT_BUILD_SANITIZERS": false,
+        "COMPILER_RT_BUILD_XRAY": false,
+        "COMPILER_RT_DEFAULT_TARGET_ONLY": true,
+        "COMPILER_RT_OS_DIR": "",
+        "AA": ""
+      }
+    }
+  ]
+}
