@@ -1,5 +1,5 @@
 [binaries]
-c = 'clang'
+c = ['clang', '-nostdlib']
 ar = 'llvm-ar'
 as = 'llvm-as'
 strip = 'llvm-strip'

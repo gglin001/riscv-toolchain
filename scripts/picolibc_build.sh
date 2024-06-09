@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # $PWD is `.../riscv-toolchain`
-ln -s $PWD/scripts/CMakePresets.json $PWD/llvm-project/llvm/CMakePresets.json
+ln -s $PWD/scripts/picolibc-cross.txt $PWD/picolibc/picolibc-cross.txt
 
 pushd picolibc
 
