@@ -1,1 +1,4 @@
 llvm-project/
+picolibc/
+
+.vscode/
