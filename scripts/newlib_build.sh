@@ -13,7 +13,7 @@ LLVM_BINDIR="$PWD/../llvm-project/build/install/bin"
 export PATH="$LLVM_BINDIR:$PATH"
 
 CC_FOR_TARGET='clang' \
-  CFLAGS_FOR_TARGET="--target=riscv64-unknown-elf -mcmodel=medany -nostdlib" \
+  CFLAGS_FOR_TARGET="--target=riscv64-unknown-elf -mcmodel=medany -nostdlib -O2" \
   ../configure \
   --target=riscv64-unknown-elf --prefix=$(pwd)/install
 
