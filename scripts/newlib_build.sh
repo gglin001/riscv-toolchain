@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# newlib should build after picolibc installed
 # $PWD is `.../riscv-toolchain`
 mkdir -p newlib/build
 
@@ -29,6 +30,8 @@ cp -r newlib/build/install/riscv64-unknown-elf/include/* \
   llvm-project/build/install/lib/newlib/riscv64-unknown-elf/rv64imac/lp64/include/
 cp newlib/build/install/riscv64-unknown-elf/lib/* \
   llvm-project/build/install/lib/newlib/riscv64-unknown-elf/rv64imac/lp64/lib/
+cp llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imac/lp64/lib/libclang_rt.builtins.a \
+  llvm-project/build/install/lib/newlib/riscv64-unknown-elf/rv64imac/lp64/lib/
 
 # `rv64imafdc/lp64d`
 mkdir -p llvm-project/build/install/lib/newlib/riscv64-unknown-elf/rv64imafdc/lp64d/include
@@ -36,4 +39,6 @@ mkdir -p llvm-project/build/install/lib/newlib/riscv64-unknown-elf/rv64imafdc/lp
 cp -r newlib/build/install/riscv64-unknown-elf/include/* \
   llvm-project/build/install/lib/newlib/riscv64-unknown-elf/rv64imafdc/lp64d/include/
 cp -r newlib/build/install/riscv64-unknown-elf/lib/rv64imafdc/lp64d/* \
+  llvm-project/build/install/lib/newlib/riscv64-unknown-elf/rv64imafdc/lp64d/lib/
+cp llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdc/lp64d/lib/libclang_rt.builtins.a \
   llvm-project/build/install/lib/newlib/riscv64-unknown-elf/rv64imafdc/lp64d/lib/
