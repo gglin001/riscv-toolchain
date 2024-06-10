@@ -11,7 +11,12 @@ pushd llvm-project
 cmake --preset clang -S$PWD/llvm
 cmake --build $PWD/build --target install-distribution
 
-# build compiler-rt
+# clang -target riscv64-unknown-elf -print-multi-lib
+# get:
+# .;@march=rv64imac@mabi=lp64
+# rv64imafdc/lp64d;@march=rv64imafdc@mabi=lp64d
+
+# build compiler-rt / `rv64imac/lp64`
 cmake --preset compiler-rt -S$PWD/compiler-rt
 cmake --build $PWD/build_crt --target install
 mkdir -p build/install/lib/clang-runtimes/riscv64-unknown-elf/include
@@ -19,7 +24,7 @@ mkdir -p build/install/lib/clang-runtimes/riscv64-unknown-elf/lib
 cp build_crt/install/lib/generic/libclang_rt.builtins-riscv64.a \
   build/install/lib/clang-runtimes/riscv64-unknown-elf/lib/libclang_rt.builtins.a
 
-# build compiler-rt-rv64imafdc-lp64d
+# build compiler-rt-rv64imafdc-lp64d / `rv64imafdc/lp64d`
 cmake --preset compiler-rt-rv64imafdc-lp64d -S$PWD/compiler-rt
 cmake --build $PWD/build_crt --target install
 mkdir -p build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdc/lp64d/include
