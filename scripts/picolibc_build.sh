@@ -28,10 +28,11 @@ meson install -C build
 popd
 
 # `rv64imac/lp64` / `.`
+# no default sysroot is created, set `--sysroot` first
 cp -r picolibc/build/install/include/* \
-  llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/include/
+  llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imac/lp64/include/
 cp picolibc/build/install/lib/* \
-  llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/lib/
+  llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imac/lp64/lib/
 
 # `rv64imafdc/lp64d`
 cp -r picolibc/build/install/include/* \
@@ -42,3 +43,13 @@ cp picolibc/build/install/lib/picolibc.ld \
   llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdc/lp64d/lib/
 cp picolibc/build/install/lib/picolibcpp.ld \
   llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdc/lp64d/lib/
+
+# `rv64imafdcv/lp64d`
+cp -r picolibc/build/install/include/* \
+  llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdcv/lp64d/include/
+cp -r picolibc/build/install/lib/rv64imafdc/lp64d/* \
+  llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdcv/lp64d/lib/
+cp picolibc/build/install/lib/picolibc.ld \
+  llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdcv/lp64d/lib/
+cp picolibc/build/install/lib/picolibcpp.ld \
+  llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdcv/lp64d/lib/

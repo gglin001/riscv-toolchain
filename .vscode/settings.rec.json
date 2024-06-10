@@ -1,0 +1,9 @@
+{
+    "terminal.integrated.env.osx": {
+        "EXT_PATH": "${workspaceFolder}/llvm-project/build/install/bin",
+    },
+    "files.watcherExclude": {
+        "**/**/**": true,
+        "**/*/**": true,
+    },
+}

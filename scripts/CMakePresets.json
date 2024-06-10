@@ -76,6 +76,15 @@
         "CMAKE_CXX_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany",
         "CMAKE_ASM_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany"
       }
+    },
+    {
+      "name": "compiler-rt-rv64imafdcv-lp64d",
+      "inherits": "compiler-rt",
+      "cacheVariables": {
+        "CMAKE_C_FLAGS": "-march=rv64imafdcv -mabi=lp64d -O2 -mcmodel=medany",
+        "CMAKE_CXX_FLAGS": "-march=rv64imafdcv -mabi=lp64d -O2 -mcmodel=medany",
+        "CMAKE_ASM_FLAGS": "-march=rv64imafdcv -mabi=lp64d -O2 -mcmodel=medany"
+      }
     }
   ]
 }
