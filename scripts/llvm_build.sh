@@ -32,8 +32,13 @@ mkdir -p build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdc/lp64d/l
 cp build_crt/install/lib/generic/libclang_rt.builtins-riscv64.a \
   build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdc/lp64d/lib/libclang_rt.builtins.a
 
-# TODO: multi-arch ?
-# clang -target riscv64-unknown-elf -print-multi-lib
+# build compiler-rt-rv64imafdcv-lp64d
+cmake --preset compiler-rt-rv64imafdcv-lp64d -S$PWD/compiler-rt
+cmake --build $PWD/build_crt --target install
+mkdir -p build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdcv/lp64d/include
+mkdir -p build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdcv/lp64d/lib
+cp build_crt/install/lib/generic/libclang_rt.builtins-riscv64.a \
+  build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdcv/lp64d/lib/libclang_rt.builtins.a
 
 # TODO: build libcxx
 
