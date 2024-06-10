@@ -28,24 +28,15 @@ meson install -C build
 popd
 
 # `rv64imac/lp64` / `.`
-mkdir -p llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/include
-mkdir -p llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/lib
 cp -r picolibc/build/install/include/* \
   llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/include/
 cp picolibc/build/install/lib/* \
   llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/lib/
-# TODO: fix it
-cp llvm-project/build_crt/install/lib/riscv64-unknown-unknown-elf/libclang_rt.builtins.a \
-  llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/lib/
 
 # `rv64imafdc/lp64d`
-mkdir -p llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdc/lp64d/include
-mkdir -p llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdc/lp64d/lib
 cp -r picolibc/build/install/include/* \
   llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdc/lp64d/include/
 cp -r picolibc/build/install/lib/rv64imafdc/lp64d/* \
-  llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdc/lp64d/lib/
-cp llvm-project/build_crt/install/lib/riscv64-unknown-unknown-elf/libclang_rt.builtins.a \
   llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdc/lp64d/lib/
 cp picolibc/build/install/lib/picolibc.ld \
   llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdc/lp64d/lib/

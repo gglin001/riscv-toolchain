@@ -52,12 +52,12 @@
         "CMAKE_C_COMPILER_TARGET": "riscv64-unknown-elf",
         "CMAKE_CXX_COMPILER_TARGET": "riscv64-unknown-elf",
         "CMAKE_ASM_COMPILER_TARGET": "riscv64-unknown-elf",
-        "CMAKE_C_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany",
-        "CMAKE_CXX_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany",
-        "CMAKE_ASM_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany",
+        "CMAKE_C_FLAGS": "-O2 -mcmodel=medany",
+        "CMAKE_CXX_FLAGS": "-O2 -mcmodel=medany",
+        "CMAKE_ASM_FLAGS": "-O2 -mcmodel=medany",
         "CMAKE_EXE_LINKER_FLAGS": "-nostartfiles -nostdlib",
         "LLVM_CMAKE_DIR": "${sourceDir}/../build/lib/cmake/llvm",
-        "LLVM_ENABLE_PER_TARGET_RUNTIME_DIR": true,
+        "LLVM_ENABLE_PER_TARGET_RUNTIME_DIR": false,
         "COMPILER_RT_BAREMETAL_BUILD": true,
         "COMPILER_RT_BUILD_BUILTINS": true,
         "COMPILER_RT_BUILD_MEMPROF": false,
@@ -65,8 +65,16 @@
         "COMPILER_RT_BUILD_PROFILE": false,
         "COMPILER_RT_BUILD_SANITIZERS": false,
         "COMPILER_RT_BUILD_XRAY": false,
-        "COMPILER_RT_DEFAULT_TARGET_ONLY": true,
-        "COMPILER_RT_OS_DIR": ""
+        "COMPILER_RT_DEFAULT_TARGET_ONLY": true
+      }
+    },
+    {
+      "name": "compiler-rt-rv64imafdc-lp64d",
+      "inherits": "compiler-rt",
+      "cacheVariables": {
+        "CMAKE_C_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany",
+        "CMAKE_CXX_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany",
+        "CMAKE_ASM_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany"
       }
     }
   ]
