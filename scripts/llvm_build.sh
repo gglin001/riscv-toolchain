@@ -3,6 +3,7 @@
 # $PWD is `.../riscv-toolchain`
 ln -s $PWD/scripts/CMakePresets.json $PWD/llvm-project/llvm/CMakePresets.json
 ln -s $PWD/scripts/CMakePresets.json $PWD/llvm-project/compiler-rt/CMakePresets.json
+ln -s $PWD/scripts/CMakePresets.json $PWD/llvm-project/runtimes/CMakePresets.json
 
 pushd llvm-project
 
@@ -40,7 +41,9 @@ mkdir -p build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdcv/lp64d/
 cp build_crt/install/lib/generic/libclang_rt.builtins-riscv64.a \
   build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdcv/lp64d/lib/libclang_rt.builtins.a
 
-# TODO: build libcxx
+# build libcxx
+cmake --preset libcxx -S$PWD/runtimes -DCMAKE_SYSROOT=$PWD/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imac/lp64
+cmake --build $PWD/build_cxx --target install
 
 # TODO: build lldb ?
 
