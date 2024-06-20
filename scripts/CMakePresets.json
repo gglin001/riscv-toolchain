@@ -38,10 +38,10 @@
       "name": "compiler-rt",
       "description": "build compiler-rt",
       "generator": "Ninja",
-      "binaryDir": "${sourceDir}/../build_crt",
+      "binaryDir": "${sourceDir}/../build_rt",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release",
-        "CMAKE_INSTALL_PREFIX": "${sourceDir}/../build_crt/install",
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/../build_rt/install",
         "CMAKE_EXPORT_COMPILE_COMMANDS": true,
         "CMAKE_SYSTEM_NAME": "Generic",
         "CMAKE_C_COMPILER": "${sourceDir}/../build/install/bin/clang",

@@ -19,26 +19,26 @@ cmake --build $PWD/build --target install-distribution
 
 # build compiler-rt / `rv64imac/lp64`
 cmake --preset compiler-rt -S$PWD/compiler-rt
-cmake --build $PWD/build_crt --target install
+cmake --build $PWD/build_rt --target install
 mkdir -p build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imac/lp64/include
 mkdir -p build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imac/lp64/lib
-cp build_crt/install/lib/generic/libclang_rt.builtins-riscv64.a \
+cp build_rt/install/lib/generic/libclang_rt.builtins-riscv64.a \
   build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imac/lp64/lib/libclang_rt.builtins.a
 
 # build compiler-rt-rv64imafdc-lp64d / `rv64imafdc/lp64d`
 cmake --preset compiler-rt-rv64imafdc-lp64d -S$PWD/compiler-rt
-cmake --build $PWD/build_crt --target install
+cmake --build $PWD/build_rt --target install
 mkdir -p build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdc/lp64d/include
 mkdir -p build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdc/lp64d/lib
-cp build_crt/install/lib/generic/libclang_rt.builtins-riscv64.a \
+cp build_rt/install/lib/generic/libclang_rt.builtins-riscv64.a \
   build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdc/lp64d/lib/libclang_rt.builtins.a
 
 # build compiler-rt-rv64imafdcv-lp64d
 cmake --preset compiler-rt-rv64imafdcv-lp64d -S$PWD/compiler-rt
-cmake --build $PWD/build_crt --target install
+cmake --build $PWD/build_rt --target install
 mkdir -p build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdcv/lp64d/include
 mkdir -p build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdcv/lp64d/lib
-cp build_crt/install/lib/generic/libclang_rt.builtins-riscv64.a \
+cp build_rt/install/lib/generic/libclang_rt.builtins-riscv64.a \
   build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdcv/lp64d/lib/libclang_rt.builtins.a
 
 # build libcxx
