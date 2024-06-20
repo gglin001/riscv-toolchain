@@ -10,6 +10,9 @@ git sparse-checkout set --no-cone \
   '!/clang/test' '!/clang/unittests' '!/clang/docs' '!/clang/www' \
   '!/llvm/test' '!/llvm/unittests' '!/llvm/docs' \
   '!/compiler-rt/test' '!/libcxx/test' '!/lld/test' '!/lldb/test' '!/lldb/unittests'
+git sparse-checkout add --no-cone \
+  '!/llvm/lib/Target' '/llvm/lib/Target/*.*' \
+  '/llvm/lib/Target/RISCV' '/llvm/lib/Target/ARM' '/llvm/lib/Target/AArch64'
 git fetch --depth 1 origin $LLVM_SHA
 git checkout
 popd
