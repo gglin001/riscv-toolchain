@@ -42,6 +42,7 @@ cp build_rt/install/lib/generic/libclang_rt.builtins-riscv64.a \
   build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdcv/lp64d/lib/libclang_rt.builtins.a
 
 # build libcxx
+# TODO: multi-lib
 cmake --preset libcxx -S$PWD/runtimes -DCMAKE_SYSROOT=$PWD/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imac/lp64
 cmake --build $PWD/build_cxx --target install
 
