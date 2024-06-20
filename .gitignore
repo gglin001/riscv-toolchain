@@ -1,5 +1,6 @@
 llvm-project/
 picolibc/
 newlib/
+musl/
 
 .vscode/
