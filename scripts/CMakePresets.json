@@ -69,6 +69,15 @@
       }
     },
     {
+      "name": "compiler-rt-rv64imac-lp64",
+      "inherits": "compiler-rt",
+      "cacheVariables": {
+        "CMAKE_C_FLAGS": "-march=rv64imac -mabi=lp64 -O2 -mcmodel=medany",
+        "CMAKE_CXX_FLAGS": "-march=rv64imac -mabi=lp64 -O2 -mcmodel=medany",
+        "CMAKE_ASM_FLAGS": "-march=rv64imac -mabi=lp64 -O2 -mcmodel=medany"
+      }
+    },
+    {
       "name": "compiler-rt-rv64imafdc-lp64d",
       "inherits": "compiler-rt",
       "cacheVariables": {
