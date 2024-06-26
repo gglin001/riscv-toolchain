@@ -1,0 +1,16 @@
+[binaries]
+c = ['clang', '-nostdlib']
+ar = 'llvm-ar'
+as = 'llvm-as'
+strip = 'llvm-strip'
+
+[host_machine]
+system = 'unknown'
+cpu_family = 'riscv64'
+cpu = 'riscv64'
+endian = 'little'
+
+[properties]
+c_args = [ '-mcmodel=medany', '-nostdlib', '-fno-common', '-ftls-model=local-exec', '-march=rv64ima', '-mabi=lp64' ]
+needs_exe_wrapper = true
+skip_sanity_check = true
