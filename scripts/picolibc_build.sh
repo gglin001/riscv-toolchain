@@ -2,6 +2,7 @@
 
 # $PWD is `.../riscv-toolchain`
 ln -s $PWD/scripts/picolibc-cross.txt $PWD/picolibc/picolibc-cross.txt
+ln -s $PWD/scripts/picolibc-cross-rv64ima-lp64.txt $PWD/picolibc/picolibc-cross-rv64ima-lp64.txt
 
 pushd picolibc
 
@@ -21,9 +22,19 @@ args=(
   build
 )
 meson setup "${args[@]}"
-
 meson compile -C build
 meson install -C build
+
+# non-multilib
+args=(
+  -Dmultilib=false
+  --cross-file=$PWD/picolibc-cross-rv64ima-lp64.txt
+  --prefix=$PWD/build-rv64ima-lp64/install
+  build-rv64ima-lp64
+)
+meson setup "${args[@]}"
+meson compile -C build-rv64ima-lp64
+meson install -C build-rv64ima-lp64
 
 popd
 
@@ -53,3 +64,9 @@ cp picolibc/build/install/lib/picolibc.ld \
   llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdcv/lp64d/lib/
 cp picolibc/build/install/lib/picolibcpp.ld \
   llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdcv/lp64d/lib/
+
+# `rv64ima/lp64`
+cp -r picolibc/build-rv64ima-lp64/install/include/* \
+  llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64ima/lp64/include/
+cp picolibc/build-rv64ima-lp64/install/lib/* \
+  llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64ima/lp64/lib/

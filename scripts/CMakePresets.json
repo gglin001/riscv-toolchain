@@ -87,6 +87,17 @@
       }
     },
     {
+      "name": "compiler-rt-rv64ima-lp64",
+      "inherits": "compiler-rt",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER_WORKS": true,
+        "CMAKE_CXX_COMPILER_WORKS": true,
+        "CMAKE_C_FLAGS": "-march=rv64ima -mabi=lp64 -O2 -mcmodel=medany",
+        "CMAKE_CXX_FLAGS": "-march=rv64ima -mabi=lp64 -O2 -mcmodel=medany",
+        "CMAKE_ASM_FLAGS": "-march=rv64ima -mabi=lp64 -O2 -mcmodel=medany"
+      }
+    },
+    {
       "name": "libcxx",
       "description": "build libcxx",
       "generator": "Ninja",
