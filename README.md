@@ -4,7 +4,7 @@ riscv bare metal toolchain
 
 ## target
 
-clang + llvm-runtime + picolibc + ld.lld on linux and macos
+clang + compiler-rt + picolibc + ld.lld on linux and macos
 
 ## build
 
