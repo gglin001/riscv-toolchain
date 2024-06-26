@@ -29,6 +29,17 @@ make -j$(nproc)
 make install
 popd
 
+mkdir -p build-rv64ima-lp64 && pushd build-rv64ima-lp64
+CC="clang" CROSS_COMPILE="llvm-" \
+  CFLAGS="--target=riscv64-unknown-elf -mcmodel=medany -nostdlib -O2 -march=rv64ima -mabi=lp64" \
+  ../configure \
+  --prefix=$PWD/install \
+  --target=riscv64-unknown-elf \
+  --disable-shared
+make -j$(nproc)
+make install
+popd
+
 popd
 
 # `rv64imac/lp64`
@@ -49,3 +60,12 @@ cp -r musl/build-rv64imafdc-lp64d/install/lib \
   llvm-project/build/install/lib/musl/riscv64-unknown-elf/rv64imafdc/lp64d/
 cp llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdc/lp64d/lib/libclang_rt.builtins.a \
   llvm-project/build/install/lib/musl/riscv64-unknown-elf/rv64imafdc/lp64d/lib/
+
+# `rv64ima/lp64`
+mkdir -p llvm-project/build/install/lib/musl/riscv64-unknown-elf/rv64ima/lp64
+cp -r musl/build-rv64ima-lp64/install/include \
+  llvm-project/build/install/lib/musl/riscv64-unknown-elf/rv64ima/lp64/
+cp -r musl/build-rv64ima-lp64/install/lib \
+  llvm-project/build/install/lib/musl/riscv64-unknown-elf/rv64ima/lp64/
+cp llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64ima/lp64/lib/libclang_rt.builtins.a \
+  llvm-project/build/install/lib/musl/riscv64-unknown-elf/rv64ima/lp64/lib/

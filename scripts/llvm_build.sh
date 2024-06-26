@@ -18,7 +18,7 @@ cmake --build $PWD/build --target install-distribution
 # rv64imafdc/lp64d;@march=rv64imafdc@mabi=lp64d
 
 # build compiler-rt / `rv64imac/lp64`
-cmake --preset compiler-rt -S$PWD/compiler-rt
+cmake --preset compiler-rt-rv64imac-lp64 -S$PWD/compiler-rt
 cmake --build $PWD/build_rt --target install
 mkdir -p build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imac/lp64/include
 mkdir -p build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imac/lp64/lib

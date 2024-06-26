@@ -7,18 +7,19 @@ mkdir -p newlib/build
 # TODO: unify build env
 micromamba install texinfo
 
-pushd newlib/build
+pushd newlib
 
 LLVM_BINDIR="$PWD/../llvm-project/build/install/bin"
 export PATH="$LLVM_BINDIR:$PATH"
 
+mkdir -p build && pushd build
 CC_FOR_TARGET='clang' \
   CFLAGS_FOR_TARGET="--target=riscv64-unknown-elf -mcmodel=medany -nostdlib -O2" \
   ../configure \
   --target=riscv64-unknown-elf --prefix=$(pwd)/install
-
 make -j$(nproc)
 make install
+popd
 
 popd
 

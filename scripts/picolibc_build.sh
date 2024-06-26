@@ -15,8 +15,8 @@ export PATH="$LLVM_BINDIR:$PATH"
 # rv64imafdc/lp64d;@march=rv64imafdc@mabi=lp64d
 
 args=(
-  # -Dmultilib-list="rv64imac/lp64,rv64imafdc/lp64d"
-  -Dmultilib-list=".,rv64imafdc/lp64d"
+  -Dmultilib-list="rv64imac/lp64,rv64imafdc/lp64d"
+  # -Dmultilib-list=".,rv64imafdc/lp64d"
   --cross-file=$PWD/picolibc-cross.txt
   --prefix=$PWD/build/install
   build
@@ -55,15 +55,16 @@ cp picolibc/build/install/lib/picolibc.ld \
 cp picolibc/build/install/lib/picolibcpp.ld \
   llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdc/lp64d/lib/
 
-# `rv64imafdcv/lp64d`
-cp -r picolibc/build/install/include/* \
-  llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdcv/lp64d/include/
-cp -r picolibc/build/install/lib/rv64imafdc/lp64d/* \
-  llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdcv/lp64d/lib/
-cp picolibc/build/install/lib/picolibc.ld \
-  llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdcv/lp64d/lib/
-cp picolibc/build/install/lib/picolibcpp.ld \
-  llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdcv/lp64d/lib/
+# # TODO: add `rv64imafdcv/lp64d`
+# # `rv64imafdcv/lp64d`
+# cp -r picolibc/build/install/include/* \
+#   llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdcv/lp64d/include/
+# cp -r picolibc/build/install/lib/rv64imafdc/lp64d/* \
+#   llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdcv/lp64d/lib/
+# cp picolibc/build/install/lib/picolibc.ld \
+#   llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdcv/lp64d/lib/
+# cp picolibc/build/install/lib/picolibcpp.ld \
+#   llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdcv/lp64d/lib/
 
 # `rv64ima/lp64`
 cp -r picolibc/build-rv64ima-lp64/install/include/* \
