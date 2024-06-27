@@ -9,9 +9,9 @@ DIR="_demos/example" && mkdir -p $DIR
 args=(
   -target riscv64-unknown-elf
   #
-  --sysroot llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imac/lp64
-  -march=rv64im
-  -mabi=lp64
+  --sysroot llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdcv/lp64d
+  -march=rv64gcv
+  -mabi=lp64d
   #
   -nostdlib
   -lc
@@ -20,12 +20,12 @@ args=(
   #
   -mcmodel=medany
   #
-  -lcrt0-semihost
-  # -lcrt0
+  # -lcrt0-semihost # fail for rv64gcv
+  -lcrt0
   # -lcrt0-hosted
   #
   -lsemihost
-  # -ldummyhost
+  -ldummyhost
   #
   -T examples/riscv.ld
   -Wl,-Map,$DIR/main.map
@@ -33,8 +33,7 @@ args=(
   # -v
   #
   -o $DIR/main
-  # examples/add.c
-  examples/hello.c
+  examples/rvv.c
 )
 clang "${args[@]}"
 clang "${args[@]}" -S -o $DIR/main.s
@@ -42,10 +41,12 @@ llvm-objdump -M no-aliases -d $DIR/main >$DIR/main.dasm
 
 ###############################################################################
 
+# TODO: why freeze at func `strlen_vec` ?
+
 DIR="_demos/example" && mkdir -p $DIR
 args=(
   -machine virt
-  -cpu rv64
+  -cpu rv64,v=true,vlen=256,elen=64,vext_spec=v1.0
   -semihosting-config enable=on # semihost
   -nographic
   -bios none
@@ -53,7 +54,7 @@ args=(
   -serial none
   #
   # -d out_asm
-  # -d in_asm
+  -d in_asm
   # -d cpu
   # -d exec
   # -d op
