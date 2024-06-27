@@ -24,7 +24,7 @@ args=(
   -lcrt0
   # -lcrt0-hosted
   #
-  -lsemihost
+  # -lsemihost
   -ldummyhost
   #
   -T examples/riscv.ld
@@ -62,5 +62,20 @@ args=(
   -kernel $DIR/main
 )
 qemu-system-riscv64 "${args[@]}"
+
+###############################################################################
+
+# TODO: why get `trap_illegal_instruction`
+
+DIR="_demos/example" && mkdir -p $DIR
+args=(
+  -d
+  --isa rv64gcv
+  --pc=0x80000000
+  $DIR/main
+)
+spike "${args[@]}"
+
+# r 300
 
 ###############################################################################
