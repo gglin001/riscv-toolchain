@@ -9,7 +9,7 @@ DIR="_demos/example" && mkdir -p $DIR
 args=(
   -target riscv64-unknown-elf
   #
-  --sysroot llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imac/lp64
+  --sysroot llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64ima/lp64
   -march=rv64im
   -mabi=lp64
   #
@@ -31,13 +31,13 @@ args=(
   -Wl,-Map,$DIR/main.map
   #
   # -v
+  -save-temps=obj
   #
   -o $DIR/main
   # examples/add.c
   examples/hello.c
 )
 clang "${args[@]}"
-clang "${args[@]}" -S -o $DIR/main.s
 llvm-objdump -M no-aliases -d $DIR/main >$DIR/main.dasm
 
 ###############################################################################
