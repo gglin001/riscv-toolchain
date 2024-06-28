@@ -23,8 +23,8 @@ args=(
   #
   -nostdlib
   -lc
-  # -lm
-  # -lclang_rt.builtins
+  -lm
+  -lclang_rt.builtins
   #
   -mcmodel=medany
   #
@@ -32,7 +32,7 @@ args=(
   # -lnosys
   -lsemihost
   #
-  -Wl,-Ttext=0x80000000
+  # -Wl,-Ttext=0x80000000
   -T examples/ld_default_qemu.ld
   -Wl,-Map,$DIR/main.map
   #
@@ -47,10 +47,9 @@ args=(
   -o $DIR/main
   #
   # llvm-project/build/install/lib/newlib/riscv64-unknown-elf/rv64ima/lp64/lib/crt0.o
-  examples/crt0.S
-  # examples/hello.c
+  examples/crt0_default_qemu.S
+  # examples/hello.c # not print
   examples/add.c
-  # examples/hello.newlib.c
 )
 clang "${args[@]}"
 llvm-objdump -M no-aliases -d $DIR/main >$DIR/main.dasm
@@ -98,7 +97,7 @@ args=(
   -serial none
   #
   # -d out_asm
-  -d in_asm
+  # -d in_asm
   # -d cpu
   # -d exec
   # -d op
