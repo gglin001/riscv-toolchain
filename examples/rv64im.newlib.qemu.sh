@@ -5,11 +5,19 @@ export PATH="$LLVM_BINDIR:$PATH"
 
 ###############################################################################
 
+# riscv64-unknown-elf-ld --verbose >examples/ld_default.ld
+#
+# modify `ld_default.ld` for qemu-virt
+# ref: https://twilco.github.io/riscv-from-scratch/2019/04/27/riscv-from-scratch-2.html
+#
+
+###############################################################################
+
 DIR="_demos/example" && mkdir -p $DIR
 args=(
   -target riscv64-unknown-elf
   #
-  --sysroot llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64ima/lp64
+  --sysroot llvm-project/build/install/lib/newlib/riscv64-unknown-elf/rv64ima/lp64
   -march=rv64im
   -mabi=lp64
   #
@@ -20,31 +28,45 @@ args=(
   #
   -mcmodel=medany
   #
-  -lcrt0-semihost
-  # -lcrt0
-  # -lcrt0-hosted
-  #
+  # -lgloss
+  # -lnosys
   -lsemihost
-  # -ldummyhost
   #
-  -T examples/riscv.ld
+  # -Wl,-Ttext=0x80000000
+  -T examples/ld.default.qemu.ld
   -Wl,-Map,$DIR/main.map
   #
   # -v
   -save-temps=obj
   #
   -o $DIR/main
-  # examples/add.c
-  examples/hello.c
+  #
+  examples/crt0.default.qemu.S
+  # examples/hello.c # no print
+  examples/add.c
 )
 clang "${args[@]}"
 llvm-objdump -M no-aliases -d $DIR/main >$DIR/main.dasm
 llvm-objdump -M no-aliases -s -d $DIR/main >$DIR/main.s.dasm
+llvm-objcopy -O binary $DIR/main $DIR/main.bin
+
+###############################################################################
+
+# DIR="_demos/example" && mkdir -p $DIR
+# args=(
+#   -m512
+#   -d
+#   $DIR/main
+# )
+# spike "${args[@]}"
+
+# r 100
 
 ###############################################################################
 
 DIR="_demos/example" && mkdir -p $DIR
 args=(
+  -m 512M
   -machine virt
   -cpu rv64
   -semihosting-config enable=on # semihost
@@ -54,13 +76,24 @@ args=(
   -serial none
   #
   # -d out_asm
-  # -d in_asm
+  -d in_asm
   # -d cpu
   # -d exec
   # -d op
   #
   -kernel $DIR/main
+  # -kernel $DIR/main.bin
 )
 qemu-system-riscv64 "${args[@]}"
+# qemu-system-riscv64 -s "${args[@]}"
+
+###############################################################################
+
+# gdb
+# target remote :1234
+
+# lldb
+# target create _demos/example/main
+# gdb-remote localhost:1234
 
 ###############################################################################
