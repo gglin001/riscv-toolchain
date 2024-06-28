@@ -36,11 +36,6 @@ args=(
   -T examples/ld_default_qemu.ld
   -Wl,-Map,$DIR/main.map
   #
-  # 0x1000000
-  # -Wl,--split-stack-adjust-size=16777216
-  # -Wl,-z,execstack
-  # -Wl,-z,stack-size=16777216
-  #
   # -v
   -save-temps=obj
   #
