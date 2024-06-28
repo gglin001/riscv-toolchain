@@ -56,14 +56,14 @@ spike "${args[@]}"
 # )
 # spike "${args[@]}"
 
-# # 2 times
-# # until pc 0 0x80000000
+# 2 times
+# until pc 0 0x80000000
 
 exit
 
 ###############################################################################
 
-# TODO: why fail
+# TODO: make `qemu-system-riscv64` works
 
 DIR="_demos/example" && mkdir -p $DIR
 args=(
