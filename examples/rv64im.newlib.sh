@@ -17,11 +17,15 @@ args=(
   #
   -nostdlib
   -lc
-  # -lm
-  -lgloss
+  -lm
   -lclang_rt.builtins
   #
   -mcmodel=medany
+  #
+  -lgloss
+  # -lnosys
+  # -lsemihost
+  #
   -Wl,-Map,$DIR/main.map
   #
   # -v
@@ -82,8 +86,8 @@ args=(
   # -d exec
   # -d op
   #
-  # -kernel $DIR/main
-  -kernel $DIR/main.bin
+  -kernel $DIR/main
+  # -kernel $DIR/main.bin
 )
 qemu-system-riscv64 "${args[@]}"
 # qemu-system-riscv64 -s "${args[@]}"
