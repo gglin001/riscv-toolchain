@@ -33,7 +33,7 @@ args=(
   -lsemihost
   #
   # -Wl,-Ttext=0x80000000
-  -T examples/ld_default_qemu.ld
+  -T examples/ld.default.qemu.ld
   -Wl,-Map,$DIR/main.map
   #
   # -v
@@ -41,7 +41,7 @@ args=(
   #
   -o $DIR/main
   #
-  examples/crt0_default_qemu.S
+  examples/crt0.default.qemu.S
   # examples/hello.c # no print
   examples/add.c
 )

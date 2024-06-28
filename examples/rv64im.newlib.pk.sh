@@ -5,9 +5,9 @@ export PATH="$LLVM_BINDIR:$PATH"
 
 ###############################################################################
 
-# riscv64-unknown-elf-ld --verbose >examples/ld_default.ld
+# riscv64-unknown-elf-ld --verbose >examples/ld.default.ld
 #
-# modify `ld_default.ld` for qemu-virt
+# modify `ld.default.ld` for qemu-virt
 # ref: https://twilco.github.io/riscv-from-scratch/2019/04/27/riscv-from-scratch-2.html
 #
 
@@ -41,7 +41,7 @@ args=(
   -o $DIR/main
   #
   # llvm-project/build/install/lib/newlib/riscv64-unknown-elf/rv64ima/lp64/lib/crt0.o
-  examples/crt0_default.S
+  examples/crt0.default.S
   examples/hello.c
   # examples/add.c
 )
