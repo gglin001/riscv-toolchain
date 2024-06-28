@@ -13,6 +13,10 @@ args=(
   -march=rv64gcv
   -mabi=lp64d
   #
+  # --sysroot llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64ima/lp64
+  # -march=rv64ima_zve64x
+  # -mabi=lp64
+  #
   -nostdlib
   -lc
   -lm
@@ -20,12 +24,12 @@ args=(
   #
   -mcmodel=medany
   #
-  # -lcrt0-semihost # fail for rv64gcv
-  -lcrt0
+  -lcrt0-semihost
+  # -lcrt0
   # -lcrt0-hosted
   #
-  # -lsemihost
-  -ldummyhost
+  -lsemihost
+  # -ldummyhost
   #
   -T examples/riscv.ld
   -Wl,-Map,$DIR/main.map
@@ -41,8 +45,6 @@ llvm-objdump -M no-aliases -d $DIR/main >$DIR/main.dasm
 
 ###############################################################################
 
-# TODO: why freeze at func `strlen_vec` ?
-
 DIR="_demos/example" && mkdir -p $DIR
 args=(
   -machine virt
@@ -54,7 +56,7 @@ args=(
   -serial none
   #
   # -d out_asm
-  -d in_asm
+  # -d in_asm
   # -d cpu
   # -d exec
   # -d op
@@ -62,20 +64,5 @@ args=(
   -kernel $DIR/main
 )
 qemu-system-riscv64 "${args[@]}"
-
-###############################################################################
-
-# TODO: why get `trap_illegal_instruction`
-
-DIR="_demos/example" && mkdir -p $DIR
-args=(
-  -d
-  --isa rv64gcv
-  --pc=0x80000000
-  $DIR/main
-)
-spike "${args[@]}"
-
-# r 300
 
 ###############################################################################
