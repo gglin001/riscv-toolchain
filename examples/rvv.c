@@ -1,6 +1,8 @@
 #include <riscv_vector.h>
 #include <stdio.h>
 
+#include "minit.h"
+
 // copy and small modify from
 // https://github.com/riscv-non-isa/rvv-intrinsic-doc/blob/main/examples/rvv_strlen.c
 
@@ -20,6 +22,7 @@ size_t strlen_vec(char *source) {
 }
 
 int main() {
+  mstatus_init();
   char s10[10] = "012345678";
   size_t size = strlen_vec(s10);
   printf("size: %zu \n", size);
