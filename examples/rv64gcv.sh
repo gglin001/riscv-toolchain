@@ -14,7 +14,7 @@ args=(
   -mabi=lp64d
   #
   # --sysroot llvm-project/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64ima/lp64
-  # -march=rv64imav_zve64x
+  # -march=rv64ima_zve64x
   # -mabi=lp64
   #
   -nostdlib
