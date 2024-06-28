@@ -41,9 +41,8 @@ args=(
   #
   -o $DIR/main
   #
-  # llvm-project/build/install/lib/newlib/riscv64-unknown-elf/rv64ima/lp64/lib/crt0.o
   examples/crt0_default_qemu.S
-  # examples/hello.c # not print
+  # examples/hello.c # no print
   examples/add.c
 )
 clang "${args[@]}"
@@ -57,28 +56,13 @@ llvm-objcopy -O binary $DIR/main $DIR/main.bin
 # args=(
 #   -m512
 #   -d
-#   pk
-#   $DIR/main
-# )
-# spike "${args[@]}"
-
-#####
-
-# DIR="_demos/example" && mkdir -p $DIR
-# args=(
-#   -m512
-#   -d
 #   $DIR/main
 # )
 # spike "${args[@]}"
 
 # r 100
 
-# exit
-
 ###############################################################################
-
-# TODO: make `qemu-system-riscv64` works
 
 DIR="_demos/example" && mkdir -p $DIR
 args=(
@@ -92,7 +76,7 @@ args=(
   -serial none
   #
   # -d out_asm
-  # -d in_asm
+  -d in_asm
   # -d cpu
   # -d exec
   # -d op
