@@ -5,6 +5,10 @@ export PATH="$LLVM_BINDIR:$PATH"
 
 ###############################################################################
 
+# riscv64-unknown-elf-ld --verbose >ld.ld
+
+###############################################################################
+
 DIR="_demos/example" && mkdir -p $DIR
 args=(
   -target riscv64-unknown-elf
@@ -12,8 +16,6 @@ args=(
   --sysroot llvm-project/build/install/lib/newlib/riscv64-unknown-elf/rv64ima/lp64
   -march=rv64im
   -mabi=lp64
-  #
-  -Wl,-Ttext=0x80000000
   #
   -nostdlib
   -lc
@@ -26,6 +28,8 @@ args=(
   # -lnosys
   # -lsemihost
   #
+  -Wl,-Ttext=0x80000000
+  # -T ld.ld
   -Wl,-Map,$DIR/main.map
   #
   # -v

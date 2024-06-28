@@ -42,6 +42,7 @@ args=(
 )
 clang "${args[@]}"
 llvm-objdump -M no-aliases -d $DIR/main >$DIR/main.dasm
+llvm-objdump -M no-aliases -s -d $DIR/main >$DIR/main.s.dasm
 
 ###############################################################################
 
