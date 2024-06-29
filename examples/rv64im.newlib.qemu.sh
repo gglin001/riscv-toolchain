@@ -42,8 +42,8 @@ args=(
   -o $DIR/main
   #
   examples/crt0.default.qemu.S
-  # examples/hello.c # no print
-  examples/add.c
+  examples/hello.c # TODO: why no print
+  # examples/add.c
 )
 clang "${args[@]}"
 llvm-objdump -M no-aliases -d $DIR/main >$DIR/main.dasm
@@ -74,9 +74,10 @@ args=(
   -bios none
   -monitor none
   -serial none
+  # -serial stdio
   #
   # -d out_asm
-  -d in_asm
+  # -d in_asm
   # -d cpu
   # -d exec
   # -d op
