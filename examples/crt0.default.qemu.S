@@ -38,9 +38,6 @@ _start:
 .Ljvt_init_end:
 
   # NOTE: init sp
-  # 0x81000000
-  # lui	sp, 0x81000
-  # add s0, sp, zero
   la sp, __stack_top
   add s0, sp, zero
 

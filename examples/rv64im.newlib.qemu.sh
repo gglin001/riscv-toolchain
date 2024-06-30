@@ -8,7 +8,9 @@ export PATH="$LLVM_BINDIR:$PATH"
 # riscv64-unknown-elf-ld --verbose >examples/ld_default.ld
 #
 # modify `ld_default.ld` for qemu-virt
-# ref: https://twilco.github.io/riscv-from-scratch/2019/04/27/riscv-from-scratch-2.html
+# ref:
+# https://twilco.github.io/riscv-from-scratch/2019/04/27/riscv-from-scratch-2.html
+# https://github.com/qemu/qemu/blob/master/hw/riscv/virt.c
 #
 
 ###############################################################################
@@ -42,8 +44,8 @@ args=(
   -o $DIR/main
   #
   examples/crt0.default.qemu.S
-  # examples/hello.c # no print
-  examples/add.c
+  examples/hello.c # TODO: support qemu virt uart
+  # examples/add.c
 )
 clang "${args[@]}"
 llvm-objdump -M no-aliases -d $DIR/main >$DIR/main.dasm
@@ -74,6 +76,7 @@ args=(
   -bios none
   -monitor none
   -serial none
+  # -serial stdio
   #
   # -d out_asm
   -d in_asm

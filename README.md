@@ -9,6 +9,8 @@ clang + compiler-rt + picolibc + ld.lld on linux and macos
 ## build
 
 ```bash
+# setup env
+scripts/env_setup.sh
 
 # llvm
 bash scripts/llvm_download.sh

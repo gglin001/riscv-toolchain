@@ -2,10 +2,6 @@
 
 # newlib should build after picolibc installed
 # $PWD is `.../riscv-toolchain`
-mkdir -p newlib/build
-
-# TODO: unify build env
-micromamba install texinfo
 
 pushd newlib
 
