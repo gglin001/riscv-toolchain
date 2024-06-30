@@ -8,7 +8,9 @@ export PATH="$LLVM_BINDIR:$PATH"
 # riscv64-unknown-elf-ld --verbose >examples/ld_default.ld
 #
 # modify `ld_default.ld` for qemu-virt
-# ref: https://twilco.github.io/riscv-from-scratch/2019/04/27/riscv-from-scratch-2.html
+# ref:
+# https://twilco.github.io/riscv-from-scratch/2019/04/27/riscv-from-scratch-2.html
+# https://github.com/qemu/qemu/blob/master/hw/riscv/virt.c
 #
 
 ###############################################################################
