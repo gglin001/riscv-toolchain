@@ -50,8 +50,13 @@ cp build_rt/install/lib/generic/libclang_rt.builtins-riscv64.a \
   build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64ima/lp64/lib/libclang_rt.builtins.a
 
 # build libcxx
-# TODO: multi-lib
-cmake --preset libcxx -S$PWD/runtimes -DCMAKE_SYSROOT=$PWD/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imac/lp64
+# cmake --preset libcxx-rv64imac-lp64 -S$PWD/runtimes -DCMAKE_SYSROOT=$PWD/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imac/lp64
+# cmake --build $PWD/build_cxx --target install
+
+# cmake --preset libcxx-rv64imafdc-lp64d -S$PWD/runtimes -DCMAKE_SYSROOT=$PWD/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64imafdc/lp64d
+# cmake --build $PWD/build_cxx --target install
+
+cmake --preset libcxx-rv64ima-lp64 -S$PWD/runtimes -DCMAKE_SYSROOT=$PWD/build/install/lib/clang-runtimes/riscv64-unknown-elf/rv64ima/lp64
 cmake --build $PWD/build_cxx --target install
 
 # TODO: build lldb ?

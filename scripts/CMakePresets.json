@@ -72,27 +72,27 @@
       "name": "compiler-rt-rv64imac-lp64",
       "inherits": "compiler-rt",
       "cacheVariables": {
-        "CMAKE_C_FLAGS": "-march=rv64imac -mabi=lp64 -O2 -mcmodel=medany",
-        "CMAKE_CXX_FLAGS": "-march=rv64imac -mabi=lp64 -O2 -mcmodel=medany",
-        "CMAKE_ASM_FLAGS": "-march=rv64imac -mabi=lp64 -O2 -mcmodel=medany"
+        "CMAKE_C_FLAGS": "-march=rv64imac -mabi=lp64 -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_CXX_FLAGS": "-march=rv64imac -mabi=lp64 -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_ASM_FLAGS": "-march=rv64imac -mabi=lp64 -O2 -mcmodel=medany -nostdlib"
       }
     },
     {
       "name": "compiler-rt-rv64imafdc-lp64d",
       "inherits": "compiler-rt",
       "cacheVariables": {
-        "CMAKE_C_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany",
-        "CMAKE_CXX_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany",
-        "CMAKE_ASM_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany"
+        "CMAKE_C_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_CXX_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_ASM_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany -nostdlib"
       }
     },
     {
       "name": "compiler-rt-rv64imafdcv-lp64d",
       "inherits": "compiler-rt",
       "cacheVariables": {
-        "CMAKE_C_FLAGS": "-march=rv64imafdcv -mabi=lp64d -O2 -mcmodel=medany",
-        "CMAKE_CXX_FLAGS": "-march=rv64imafdcv -mabi=lp64d -O2 -mcmodel=medany",
-        "CMAKE_ASM_FLAGS": "-march=rv64imafdcv -mabi=lp64d -O2 -mcmodel=medany"
+        "CMAKE_C_FLAGS": "-march=rv64imafdcv -mabi=lp64d -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_CXX_FLAGS": "-march=rv64imafdcv -mabi=lp64d -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_ASM_FLAGS": "-march=rv64imafdcv -mabi=lp64d -O2 -mcmodel=medany -nostdlib"
       }
     },
     {
@@ -101,9 +101,9 @@
       "cacheVariables": {
         "CMAKE_C_COMPILER_WORKS": true,
         "CMAKE_CXX_COMPILER_WORKS": true,
-        "CMAKE_C_FLAGS": "-march=rv64ima -mabi=lp64 -O2 -mcmodel=medany",
-        "CMAKE_CXX_FLAGS": "-march=rv64ima -mabi=lp64 -O2 -mcmodel=medany",
-        "CMAKE_ASM_FLAGS": "-march=rv64ima -mabi=lp64 -O2 -mcmodel=medany"
+        "CMAKE_C_FLAGS": "-march=rv64ima -mabi=lp64 -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_CXX_FLAGS": "-march=rv64ima -mabi=lp64 -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_ASM_FLAGS": "-march=rv64ima -mabi=lp64 -O2 -mcmodel=medany -nostdlib"
       }
     },
     {
@@ -147,6 +147,33 @@
         "LIBCXX_ENABLE_MONOTONIC_CLOCK": false,
         "LIBCXX_ENABLE_FILESYSTEM": false,
         "LIBCXX_INCLUDE_BENCHMARKS": false
+      }
+    },
+    {
+      "name": "libcxx-rv64imac-lp64",
+      "inherits": "libcxx",
+      "cacheVariables": {
+        "CMAKE_C_FLAGS": "-march=rv64imac -mabi=lp64 -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_CXX_FLAGS": "-march=rv64imac -mabi=lp64 -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_ASM_FLAGS": "-march=rv64imac -mabi=lp64 -O2 -mcmodel=medany -nostdlib"
+      }
+    },
+    {
+      "name": "libcxx-rv64imafdc-lp64d",
+      "inherits": "libcxx",
+      "cacheVariables": {
+        "CMAKE_C_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_CXX_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_ASM_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany -nostdlib"
+      }
+    },
+    {
+      "name": "libcxx-rv64ima-lp64",
+      "inherits": "libcxx",
+      "cacheVariables": {
+        "CMAKE_C_FLAGS": "-march=rv64ima -mabi=lp64 -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_CXX_FLAGS": "-march=rv64ima -mabi=lp64 -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_ASM_FLAGS": "-march=rv64ima -mabi=lp64 -O2 -mcmodel=medany -nostdlib"
       }
     }
   ]
