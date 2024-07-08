@@ -174,9 +174,8 @@
       "binaryDir": "${sourceDir}/../build-libcxx-rv64imafdc-lp64d",
       "cacheVariables": {
         "CMAKE_INSTALL_PREFIX": "${sourceDir}/../build-libcxx-rv64imafdc-lp64d/install",
-        // export EXTRA_CMAKE_C_FLAGS="-I$SYSROOT/include"
-        "CMAKE_C_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany -nostdlib $env{EXTRA_CMAKE_C_FLAGS}",
-        "CMAKE_CXX_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany -nostdlib $env{EXTRA_CMAKE_C_FLAGS}",
+        "CMAKE_C_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_CXX_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany -nostdlib",
         "CMAKE_ASM_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany -nostdlib"
       }
     },
