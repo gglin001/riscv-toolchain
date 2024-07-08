@@ -9,7 +9,8 @@ git sparse-checkout set --no-cone \
   /clang /cmake /compiler-rt /libcxx /libcxxabi /libunwind /lld /lldb /llvm /runtimes \
   '!/clang/test' '!/clang/unittests' '!/clang/docs' '!/clang/www' \
   '!/llvm/test' '!/llvm/unittests' '!/llvm/docs' \
-  '!/compiler-rt/test' '!/libcxx/test' '!/lld/test' '!/lldb/test' '!/lldb/unittests'
+  '!/compiler-rt/test' '!/libcxx/test' '!/lld/test' '!/lldb/test' '!/lldb/unittests' \
+  '/.gitignore'
 git sparse-checkout add --no-cone \
   '!/llvm/lib/Target' '/llvm/lib/Target/*.*' \
   '/llvm/lib/Target/RISCV' '/llvm/lib/Target/ARM' '/llvm/lib/Target/AArch64'
