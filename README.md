@@ -20,6 +20,9 @@ bash scripts/llvm_build.sh
 bash scripts/picolibc_download.sh
 bash scripts/picolibc_build.sh
 
+# optional: libcxx
+bash scripts/llvm_build_libcxx.sh
+
 # optional: newlib
 bash scripts/newlib_download.sh
 bash scripts/newlib_build.sh
