@@ -38,10 +38,10 @@
       "name": "compiler-rt",
       "description": "build compiler-rt",
       "generator": "Ninja",
-      "binaryDir": "${sourceDir}/../build_rt",
+      "binaryDir": "${sourceDir}/../build-compiler-rt",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release",
-        "CMAKE_INSTALL_PREFIX": "${sourceDir}/../build_rt/install",
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/../build-compiler-rt/install",
         "CMAKE_EXPORT_COMPILE_COMMANDS": true,
         "CMAKE_SYSTEM_NAME": "Generic",
         "CMAKE_C_COMPILER": "${sourceDir}/../build/install/bin/clang",
@@ -71,49 +71,57 @@
     {
       "name": "compiler-rt-rv64imac-lp64",
       "inherits": "compiler-rt",
+      "binaryDir": "${sourceDir}/../build-compiler-rt-rv64imac-lp64",
       "cacheVariables": {
-        "CMAKE_C_FLAGS": "-march=rv64imac -mabi=lp64 -O2 -mcmodel=medany",
-        "CMAKE_CXX_FLAGS": "-march=rv64imac -mabi=lp64 -O2 -mcmodel=medany",
-        "CMAKE_ASM_FLAGS": "-march=rv64imac -mabi=lp64 -O2 -mcmodel=medany"
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/../build-compiler-rt-rv64imac-lp64/install",
+        "CMAKE_C_FLAGS": "-march=rv64imac -mabi=lp64 -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_CXX_FLAGS": "-march=rv64imac -mabi=lp64 -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_ASM_FLAGS": "-march=rv64imac -mabi=lp64 -O2 -mcmodel=medany -nostdlib"
       }
     },
     {
       "name": "compiler-rt-rv64imafdc-lp64d",
       "inherits": "compiler-rt",
+      "binaryDir": "${sourceDir}/../build-compiler-rt-rv64imafdc-lp64d",
       "cacheVariables": {
-        "CMAKE_C_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany",
-        "CMAKE_CXX_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany",
-        "CMAKE_ASM_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany"
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/../build-compiler-rt-rv64imafdc-lp64d/install",
+        "CMAKE_C_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_CXX_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_ASM_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany -nostdlib"
       }
     },
     {
       "name": "compiler-rt-rv64imafdcv-lp64d",
       "inherits": "compiler-rt",
+      "binaryDir": "${sourceDir}/../build-compiler-rt-rv64imafdcv-lp64d",
       "cacheVariables": {
-        "CMAKE_C_FLAGS": "-march=rv64imafdcv -mabi=lp64d -O2 -mcmodel=medany",
-        "CMAKE_CXX_FLAGS": "-march=rv64imafdcv -mabi=lp64d -O2 -mcmodel=medany",
-        "CMAKE_ASM_FLAGS": "-march=rv64imafdcv -mabi=lp64d -O2 -mcmodel=medany"
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/../build-compiler-rt-rv64imafdcv-lp64d/install",
+        "CMAKE_C_FLAGS": "-march=rv64imafdcv -mabi=lp64d -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_CXX_FLAGS": "-march=rv64imafdcv -mabi=lp64d -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_ASM_FLAGS": "-march=rv64imafdcv -mabi=lp64d -O2 -mcmodel=medany -nostdlib"
       }
     },
     {
       "name": "compiler-rt-rv64ima-lp64",
       "inherits": "compiler-rt",
+      "binaryDir": "${sourceDir}/../build-compiler-rt-rv64ima-lp64",
       "cacheVariables": {
         "CMAKE_C_COMPILER_WORKS": true,
         "CMAKE_CXX_COMPILER_WORKS": true,
-        "CMAKE_C_FLAGS": "-march=rv64ima -mabi=lp64 -O2 -mcmodel=medany",
-        "CMAKE_CXX_FLAGS": "-march=rv64ima -mabi=lp64 -O2 -mcmodel=medany",
-        "CMAKE_ASM_FLAGS": "-march=rv64ima -mabi=lp64 -O2 -mcmodel=medany"
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/../build-compiler-rt-rv64ima-lp64/install",
+        "CMAKE_C_FLAGS": "-march=rv64ima -mabi=lp64 -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_CXX_FLAGS": "-march=rv64ima -mabi=lp64 -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_ASM_FLAGS": "-march=rv64ima -mabi=lp64 -O2 -mcmodel=medany -nostdlib"
       }
     },
     {
       "name": "libcxx",
       "description": "build libcxx",
       "generator": "Ninja",
-      "binaryDir": "${sourceDir}/../build_cxx",
+      "binaryDir": "${sourceDir}/../build-libcxx",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release",
-        "CMAKE_INSTALL_PREFIX": "${sourceDir}/../build_cxx/install",
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/../build-libcxx/install",
         "CMAKE_EXPORT_COMPILE_COMMANDS": true,
         "CMAKE_SYSTEM_NAME": "Generic",
         "CMAKE_C_COMPILER": "${sourceDir}/../build/install/bin/clang",
@@ -147,6 +155,40 @@
         "LIBCXX_ENABLE_MONOTONIC_CLOCK": false,
         "LIBCXX_ENABLE_FILESYSTEM": false,
         "LIBCXX_INCLUDE_BENCHMARKS": false
+      }
+    },
+    {
+      "name": "libcxx-rv64imac-lp64",
+      "inherits": "libcxx",
+      "binaryDir": "${sourceDir}/../build-libcxx-rv64imac-lp64",
+      "cacheVariables": {
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/../build-libcxx-rv64imac-lp64/install",
+        "CMAKE_C_FLAGS": "-march=rv64imac -mabi=lp64 -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_CXX_FLAGS": "-march=rv64imac -mabi=lp64 -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_ASM_FLAGS": "-march=rv64imac -mabi=lp64 -O2 -mcmodel=medany -nostdlib"
+      }
+    },
+    {
+      "name": "libcxx-rv64imafdc-lp64d",
+      "inherits": "libcxx",
+      "binaryDir": "${sourceDir}/../build-libcxx-rv64imafdc-lp64d",
+      "cacheVariables": {
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/../build-libcxx-rv64imafdc-lp64d/install",
+        // export EXTRA_CMAKE_C_FLAGS="-I$SYSROOT/include"
+        "CMAKE_C_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany -nostdlib $env{EXTRA_CMAKE_C_FLAGS}",
+        "CMAKE_CXX_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany -nostdlib $env{EXTRA_CMAKE_C_FLAGS}",
+        "CMAKE_ASM_FLAGS": "-march=rv64imafdc -mabi=lp64d -O2 -mcmodel=medany -nostdlib"
+      }
+    },
+    {
+      "name": "libcxx-rv64ima-lp64",
+      "inherits": "libcxx",
+      "binaryDir": "${sourceDir}/../build-libcxx-rv64ima-lp64",
+      "cacheVariables": {
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/../build-libcxx-rv64ima-lp64/install",
+        "CMAKE_C_FLAGS": "-march=rv64ima -mabi=lp64 -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_CXX_FLAGS": "-march=rv64ima -mabi=lp64 -O2 -mcmodel=medany -nostdlib",
+        "CMAKE_ASM_FLAGS": "-march=rv64ima -mabi=lp64 -O2 -mcmodel=medany -nostdlib"
       }
     }
   ]

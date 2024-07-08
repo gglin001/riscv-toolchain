@@ -37,6 +37,7 @@ args=(
   # examples/add.c
   examples/hello.c
   # examples/malloc.c
+  # examples/file.c
 )
 clang "${args[@]}"
 llvm-objdump -M no-aliases -d $DIR/main >$DIR/main.dasm
