@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 8,
   "configurePresets": [
     {
       "name": "clang",
@@ -13,10 +13,12 @@
         "CMAKE_C_COMPILER": "/usr/bin/clang",
         "CMAKE_CXX_COMPILER": "/usr/bin/clang++",
         "CMAKE_INSTALL_RPATH_USE_LINK_PATH": true,
-        "LLVM_ENABLE_LLD": false,
+        "LLVM_ENABLE_LLD": true,
         "LLVM_ENABLE_ASSERTIONS": true,
         "LLVM_ENABLE_WARNINGS": true,
         "LLVM_ENABLE_BINDINGS": false,
+        "LLVM_ENABLE_ZSTD": false,
+        "LLVM_ENABLE_ZLIB": false,
         "LLVM_INCLUDE_DOCS": false,
         "LLVM_INCLUDE_EXAMPLES": false,
         "LLVM_INCLUDE_TESTS": false,

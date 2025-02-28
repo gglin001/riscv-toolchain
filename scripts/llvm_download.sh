@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LLVM_SHA="release/18.x"
+LLVM_SHA="release/20.x"
 LLVM_REPO="https://github.com/llvm/llvm-project.git"
 
 git clone -n --depth=1 --filter=tree:0 $LLVM_REPO llvm-project
